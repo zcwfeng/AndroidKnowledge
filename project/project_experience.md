@@ -1,4 +1,33 @@
 # Project Experience
+* 关于内存问题
+
+> context 和 view 内存释放问题 
+
+
+
+```
+	除了在Activity添加如下释放方法。更重要的是变量内部类和静态类要用弱了引用
+	----------------------------------------------
+	
+	@Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(new ContextWrapper(newBase) {
+            @Override
+            public Object getSystemService(String name) {
+
+                if (Context.AUDIO_SERVICE.equals(name)){
+                    return getApplicationContext().getSystemService(name);
+                }
+
+                return super.getSystemService(name);
+            }
+        });
+    }
+    ----------------------------------------------
+
+```
+[关于相关问题请参照](1)
+
 
 * 关于studio 打包问题
 
@@ -49,3 +78,5 @@ defaultConfig {
     }
     
 ```
+
+[1]:http://www.jianshu.com/p/c49f778e7acf
