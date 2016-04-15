@@ -15,4 +15,4 @@ if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR1) {
 如果是root 过的手机，判断是否root，然后在做逻辑操作
 
 ```
-[1]:https://github.com/zcwfeng/AndroidKnowledge/blob/master/project
+[1]:https://github.com/zcwfeng/AndroidKnowledge/master/project
