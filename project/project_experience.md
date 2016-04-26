@@ -1,9 +1,24 @@
 # Project Experience
+* 关于触屏的问题
+> 最小的触屏距离判断是否滑动
+
+```
+ViewConfigurationCompat.getScaledPagingTouchSlop(ViewConfiguration.get(getContext()))
+
+触发移动事件的最短距离，如果小于这个距离就不触发移动控件，如viewpager就是用这个距离来判断用户是否翻页
+
+```
+[参考](2)
+
 * 关于内存问题
 
+> 变量的使用
+
+```
+HashMap : 尽量使用 WeakHashMap
+List:尽量用 SparseArrayList
+```
 > context 和 view 内存释放问题 
-
-
 
 ```
 	除了在Activity添加如下释放方法。更重要的是变量内部类和静态类要用弱了引用
@@ -78,5 +93,13 @@ defaultConfig {
     }
     
 ```
+> gradle 一致卡在那里编译
+
+```
+原因某个链接连不上，这个是主要原因
+ ./gradlew build --debug
+到项目目录下，用上述命令，去排查下
+```
 
 [1]:http://www.jianshu.com/p/c49f778e7acf
+[2]:http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2013/0225/907.html
