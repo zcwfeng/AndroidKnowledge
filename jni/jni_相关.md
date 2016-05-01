@@ -101,6 +101,25 @@ NDKApplication\app\build\intermediates\ndk\debug\obj\local
 
 ```
 
+### JNI编写AS小技巧
+- 自动生成小技巧
+
+```
+在本地 调用jni的地方协商方法：
+    public native String testNdkPlugin();
+    As 快捷键会帮你生成JNI ，我的是alt+回车
+
+```
+
+- JNI 对应的java反编译类型查看
+```
+编译后，进入到classes 生成临时本地文件目录
+执行
+javap -c WeatherData.class
+```
+
+
+ 
 
 [1]:http://blog.csdn.net/yanbober/article/details/45309049
 [2]:http://blog.csdn.net/yanbober/article/details/45310365

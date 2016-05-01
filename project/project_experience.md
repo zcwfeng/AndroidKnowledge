@@ -101,5 +101,26 @@ defaultConfig {
 到项目目录下，用上述命令，去排查下
 ```
 
+> 一般我们有时候会要做防止快速重复点击，用别人框架又怕又坑，那么自己封装一下
+可以了灵活应用，既可以封装成一个Listener，也可自己在特定地方添加
+
+```
+
+	public abstract class NoDoubleClickListener implements OnClickListener {
+
+            public static final int MIN_CLICK_DELAY_TIME = 1000;
+            private long lastClickTime = 0;
+
+            @Override
+            public void onClick(View v) {
+                long currentTime = Calendar.getInstance().getTimeInMillis();
+                if (currentTime - lastClickTime > MIN_CLICK_DELAY_TIME) {
+                    lastClickTime = currentTime;
+                    onNoDoubleClick(v);
+                } 
+            }   
+        }
+```
+
 [1]:http://www.jianshu.com/p/c49f778e7acf
 [2]:http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2013/0225/907.html
