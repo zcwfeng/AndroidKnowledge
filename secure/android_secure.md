@@ -1,4 +1,27 @@
 #Android Secure
+###打包注意事项
+> 针对Android studio 工具
+
+* 开关
+* minifyEnabled true和shrinkResources true 配合使用
+
+```
+ buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            debuggable false
+            jniDebuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+         
+        }
+
+       
+```
+
+
+ 
+
 ###反编译
 
 > 工具 apktool 
