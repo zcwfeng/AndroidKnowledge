@@ -1,5 +1,9 @@
 # Project 上线技巧
+> #### 签名获取
 
+```
+keytool -exportcert -alias androiddebugkey -keystore /Users/zcw/.android/debug.keystore -list -v
+```
 > ####跳转应用商店
 
 * 通过Java包名直接定位到你的App
