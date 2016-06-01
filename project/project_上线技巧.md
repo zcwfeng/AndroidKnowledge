@@ -61,5 +61,31 @@ keytool -exportcert -alias androiddebugkey -keystore /Users/zcw/.android/debug.k
 
 范例：market://search?q=lucky wheel pub:Zcw
 
+#### AndFix
+
+* AndFix github 地址
+
+```
+https://github.com/alibaba/AndFix
+```
+* AndFix 第三方工具地址 apkpatch
+
+```
+https://github.com/alibaba/AndFix/raw/master/tools/apkpatch-1.0.3.zip
+```
+
+* AndFix 命令
+
+```
+命令 : apkpatch.bat -f new.apk -t old.apk -o output1 -k debug.keystore -p android -a androiddebugkey -e android
+
+-f <new.apk> ：新版本
+-t <old.apk> : 旧版本
+-o <output> ： 输出目录
+-k <keystore>： 打包所用的keystore
+-p <password>： keystore的密码
+-a <alias>： keystore 用户别名
+-e <alias password>： keystore 用户别名密码
+```
 
 
