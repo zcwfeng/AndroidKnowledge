@@ -1,0 +1,39 @@
+flex-direction
+flex-flow
+flex-wrap
+display
+justify-content
+justify
+align-items
+align-content
+
+1 order
+2 flex-grow
+3 flex-shrink
+4 flex-basis
+align-self
+
+
+
+RN :
+flexWrap
+justifyContent
+flex
+flexDirection
+alignSelf
+alignItems
+
+
+-moz
+-webkit
+-ms
+-o
+
+git 
+nodejs
+react-native(github,镜像配置)
+
+jsx
+div css
+
+
