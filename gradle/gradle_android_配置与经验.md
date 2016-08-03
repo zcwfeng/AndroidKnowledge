@@ -30,3 +30,12 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 ```
+
+
+* clean gradle 工程
+
+
+```
+./gradlew clean assemble
+
+```
