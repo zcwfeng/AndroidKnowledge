@@ -122,5 +122,60 @@ defaultConfig {
         }
 ```
 
+* 关于锁屏
+> 方法一   
+
+	```
+getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); setContentView(R.layout.main); 
+
+	```  
+> 方法二   
+    
+    ```
+    @Override  
+    protected void onResume() {  
+        super.onResume();  
+        pManager = ((PowerManager) getSystemService(POWER_SERVICE));  
+        mWakeLock = pManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK  
+                | PowerManager.ON_AFTER_RELEASE, TAG);  
+        mWakeLock.acquire();  
+    }  
+      
+    @Override  
+    protected void onPause() {  
+        super.onPause();  
+          
+        if(null != mWakeLock){  
+            mWakeLock.release();  
+        }  
+    }  
+
+    ```
+> 方法三  
+    
+    ```
+    public void unLock(){  
+        mContentResolver = getContentResolver();  
+        //不建议使用  
+        //setLockPatternEnabled(<a href="http://lib.csdn.net/base/15" class='replace_word' title="undefined" target='_blank' style='color:#df3434; font-weight:bold;'>Android</a>.provider.Settings.System.LOCK_PATTERN_ENABLED,false);  
+          
+        //推荐使用  
+        setLockPatternEnabled(android.provider.Settings.Secure.LOCK_PATTERN_ENABLED,false);  
+    }  
+      
+    private void setLockPatternEnabled(String systemSettingKey, boolean enabled) {  
+         //不建议使用  
+         //android.provider.Settings.System.putInt(mContentResolver,systemSettingKey, enabled ? 1 : 0);  
+          
+         //推荐使用  
+         android.provider.Settings.Secure.putInt(mContentResolver, systemSettingKey,enabled ? 1 : 0);  
+    }  
+    //但注意要加权限AndroidManifest.xml文件中加入  
+    //<uses-permission android:name="android.permission.WRITE_SETTINGS" />  
+    //还要特别注意的是要加入 android:sharedUserId="android.uid.system"，但有一个问题，  
+    //如果加入了sharedUserId后就不能使用eclipse编译了，一定要手动通过 mm -B进行编译，然后把apk install到模拟器或设备中  
+
+    
+    ```
 [1]:http://www.jianshu.com/p/c49f778e7acf
 [2]:http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2013/0225/907.html

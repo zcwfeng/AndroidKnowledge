@@ -39,3 +39,15 @@ task clean(type: Delete) {
 ./gradlew clean assemble
 
 ```
+
+* gradle 出事话编译项目
+
+> demo 一
+
+```
+git clone git@github.com:bumptech/glide.git # use https://github.com/bumptech/glide.git if "Permission Denied"
+cd glide
+git submodule init && git submodule update
+./gradlew jar
+
+```
